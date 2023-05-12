@@ -1,7 +1,7 @@
 export interface Person {
   id?: string;
   name?: string;
-  dob?: string;
+  dob?: Date;
   gender?: string;
   height?: number;
   weight?: number;

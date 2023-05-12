@@ -6,7 +6,7 @@
       "gender": "masculino",
       "height": 1.8,
       "weight": 75,
-      "note": "8",
+      "note": "asd",
       "phone": "+55 11 99999-9999"
     },
     {
@@ -15,7 +15,7 @@
       "gender": "feminino",
       "height": 1.68,
       "weight": 55,
-      "note": "10",
+      "note": "asd dd",
       "phone": "+55 21 98888-8888"
     },
     {
@@ -24,7 +24,7 @@
       "gender": "masculino",
       "height": 1.75,
       "weight": 80,
-      "note": "7",
+      "note": "asd asd asd",
       "phone": "+55 21 98888-8754"
     }
   ]
