@@ -33,6 +33,8 @@ export class AppComponent {
 
   persons: Person[];
 
+  person: Person;
+
   constructor(
     private productService: ProductService,
     private messageService: MessageService,
@@ -50,6 +52,7 @@ export class AppComponent {
   }
 
   openNew() {
+    this.person = {};
     this.product = {};
     this.submitted = false;
     this.productDialog = true;
@@ -75,8 +78,9 @@ export class AppComponent {
     });
   }
 
-  editProduct(product: Product) {
-    this.product = { ...product };
+  editProduct(person: Person) {
+    this.person = { ...person };
+    this.person.dob = new Date(this.person.dob);
     this.productDialog = true;
   }
 
@@ -106,28 +110,27 @@ export class AppComponent {
   saveProduct() {
     this.submitted = true;
 
-    if (this.product.name.trim()) {
-      if (this.product.id) {
-        this.products[this.findIndexById(this.product.id)] = this.product;
+    if (this.person.name.trim()) {
+      if (this.person.id) {
+        this.persons[this.findIndexById(this.person.id)] = this.person;
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
-          detail: 'Product Updated',
+          detail: 'Person Updated',
           life: 3000,
         });
       } else {
-        this.product.id = this.createId();
-        this.product.image = 'product-placeholder.svg';
-        this.products.push(this.product);
+        this.person.id = this.createId();
+        this.persons.push(this.person);
         this.messageService.add({
           severity: 'success',
           summary: 'Successful',
-          detail: 'Product Created',
+          detail: 'Person Created',
           life: 3000,
         });
       }
 
-      this.products = [...this.products];
+      this.persons = [...this.persons];
       this.productDialog = false;
       this.product = {};
     }
@@ -135,8 +138,8 @@ export class AppComponent {
 
   findIndexById(id: string): number {
     let index = -1;
-    for (let i = 0; i < this.products.length; i++) {
-      if (this.products[i].id === id) {
+    for (let i = 0; i < this.persons.length; i++) {
+      if (this.persons[i].id === id) {
         index = i;
         break;
       }

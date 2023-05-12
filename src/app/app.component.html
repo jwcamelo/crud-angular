@@ -118,14 +118,14 @@
             pRipple
             icon="pi pi-pencil"
             class="p-button-rounded p-button-success p-mr-2"
-            (click)="editProduct(product)"
+            (click)="editProduct(person)"
           ></button>
           <button
             pButton
             pRipple
             icon="pi pi-trash"
             class="p-button-rounded p-button-warning"
-            (click)="deleteProduct(product)"
+            (click)="deleteProduct(person)"
           ></button>
         </td>
       </tr>
@@ -141,7 +141,7 @@
 <p-dialog
   [(visible)]="productDialog"
   [style]="{ width: '450px' }"
-  header="Product Details"
+  header="Person Details"
   [modal]="true"
   styleClass="p-fluid"
 >
@@ -163,25 +163,58 @@
     <div class="p-formgrid p-grid">
       <div class="p-field p-col">
         <label for="dob">DOB</label>
-        <div class="field col-12 md:col-4">
-          <label for="basic">Basic</label>
-          <p-calendar inputId="basic" [(ngModel)]="person.dob"></p-calendar>
-        </div>
-        <!-- <p-inputNumber
-          id="dob"
-          [(ngModel)]="product.price"
-          mode="currency"
-          currency="USD"
-          locale="en-US"
-        ></p-inputNumber> -->
+        <p-calendar
+          [(ngModel)]="dob"
+          [showIcon]="true"
+          inputId="icon"
+        ></p-calendar>
       </div>
       <div class="p-field p-col">
-        <label for="quantity">Quantity</label>
-        <p-inputNumber
-          id="quantity"
-          [(ngModel)]="product.quantity"
-        ></p-inputNumber>
+        <label for="gender">Gender</label>
+        <input
+          type="text"
+          pInputText
+          id="gender"
+          [(ngModel)]="person.gender"
+          required
+        />
       </div>
+    </div>
+    <div class="p-formgrid p-grid">
+      <div class="p-field p-col">
+        <label for="height">Height</label>
+        <input
+          type="text"
+          pInputText
+          id="height"
+          [(ngModel)]="person.height"
+          required
+        />
+      </div>
+      <div class="p-field p-col">
+        <label for="weight">Weight</label>
+        <input
+          type="text"
+          pInputText
+          id="weight"
+          [(ngModel)]="person.weight"
+          required
+        />
+      </div>
+    </div>
+    <div class="p-field">
+      <label for="phone">Phone</label>
+      <input
+        type="text"
+        pInputText
+        id="phone"
+        [(ngModel)]="person.phone"
+        required
+        autofocus
+      />
+      <small class="p-invalid" *ngIf="submitted && !person.phone"
+        >Phone is required.</small
+      >
     </div>
     <div class="p-field">
       <label for="note">Note</label>
